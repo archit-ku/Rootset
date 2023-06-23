@@ -8,7 +8,7 @@ Server runs on localhost:5000
 If the twitter section just loads up with a blank page, or weather section throws SSL certificiate error, it's a school wifi thing.
 
 Twitter API section probably stops working at some point very soon.
-[update: Twitter API has now stopped working. operation resumes if i pay for the new API]
+[update: Twitter API has now stopped working. operation resumes if I pay for the new API]
 
 If weather section runs out of API requests, switch to another API key (they are hidden externally)
 
