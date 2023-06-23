@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Help{% endblock %} {% block content%}
+<br />
+<h1>How to use this website</h1>
+<br />
+<div>
+  <h4>Navigation Bar</h4>
+  <img src="./static/navbarScreenshot.png" alt="" />
+</div>
+<br />
+<br />
+<div>
+  <h4>Can't see your timeline data?</h4>
+  <p>
+    Authenticate your Twitter account using the "Login to Twitter" button on the
+    home page, and allow access.
+  </p>
+  <img src="./static/twitterAccess.png" alt="" />
+  <p>
+    You're now signed in. Navigate to "Twitter Data" to see your timeline's
+    results.
+  </p>
+</div>
+<br />
+<div>
+  <h4>Weather</h4>
+  <p>
+    Enter your location when prompted by the "Weather Data" section of the
+    website to see climate data at any location in the world.
+  </p>
+</div>
+<br />
+<div>
+  <h4>News</h4>
+  <p>
+    Navigating to the "News Data" section of the website fetches you currently
+    trending global headlines, and provides an idea of how positive, or how
+    negative, headlines currently are.
+  </p>
+</div>
+<br />
+<div>
+  <a href="/">Go to home page</a>
+</div>
+<p style="color: white">_</p>
+
+{% endblock %}

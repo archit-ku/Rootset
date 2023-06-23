@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Verify{% endblock %} {% block content
+%}
+<br />
+<a href="{{url}}" target="_blank">Get Verification Code</a>
+<br /><br /><br /><br />
+<form method="POST">
+  <div class="form-group">
+    <label for="code">Verification</label>
+    <input
+      type="text"
+      class="form-control"
+      id="code"
+      name="code"
+      placeholder="Enter verification code"
+    />
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+{% endblock %}

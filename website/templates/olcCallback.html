@@ -1,0 +1,49 @@
+<HTML>
+    <Head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    
+    <script>window.twttr = (function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+     if (d.getElementById(id)) return t;
+     js = d.createElement(s);
+     js.id = id;
+     js.src = "https://platform.twitter.com/widgets.js";
+     fjs.parentNode.insertBefore(js, fjs);
+    
+     t._e = [];
+     t.ready = function(f) {
+      t._e.push(f);
+     };
+     return t;
+    }(document, "script", "twitter-wjs"));
+    </script>
+    <Title>Callback Collector - Results</Title>
+    <style>
+    tr.border_bottom td {
+      border-bottom:1pt solid black;
+      }
+     
+    body { padding-left: 15px; }
+    </style>
+    </Head>
+    <Body>
+        <H2>Authorization Received.</H2>
+     
+    <P>
+    Here are your recent Tweets
+     
+    <table border="0px">
+     {% for tweet in tweets %}
+         <tr style="border-bottom:1pt solid gray;">
+         <td width=550px>
+            <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+                <a href="https://twitter.com/{{tweet.username}}/status/{{tweet.id}}"/>
+            </blockquote>
+        </td>
+     {% endfor %}	
+    <table>    
+        
+    </Body>
+    </HTML>

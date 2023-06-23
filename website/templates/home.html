@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+<br />
+<h1>Hi {{user.first_name}}</h1>
+<br />
+
+<h3>Things to do:</h3>
+
+{% if not user.twitter_data%}
+<form method="POST">
+  <label for="openOauth"></label>
+  <button type="submit" name="openOauth" value="true" class="btn btn-primary" >
+    Login to Twitter
+  </button>
+</form>
+{% else %}
+<form method="POST">
+  <label for="openTwt"></label>
+  <button type="submit" name="openTwt" value="true" class="btn btn-primary">
+    See Twitter Data
+  </button>
+</form>
+{% endif %}
+<br />
+<form method="POST">
+  <label for="openWeather"></label>
+  <button type="submit" name="openWeather" value="true" class="btn btn-primary">
+    See Weather Data
+  </button>
+</form>
+<br />
+<form method="POST">
+  <label for="openNews"></label>
+  <button type="submit" name="openNews" value="true" class="btn btn-primary">
+    See News Data
+  </button>
+</form>
+<br>
+<form method="POST">
+  <label for="openHelp"></label>
+  <button type="submit" name="openHelp" value="true" class="btn btn-primary">
+    See Help Page
+  </button>
+</form>
+{% endblock %}

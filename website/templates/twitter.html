@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %}Twitter Data{% endblock %} {% block
+content %}
+<br />
+<h2>Analysis of your Twitter Timeline</h2>
+<br />
+<canvas id="pieChart" width="900" height="400"></canvas>
+<script>
+  var ctx = document.getElementById("pieChart").getContext("2d");
+  var lineChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: {{ labels | safe }},
+      datasets: [
+        {
+          //label: "Analysis of your Twitter feed",
+          data: {{values | safe}},
+          fill: true,
+          borderColor: "rgb(256, 256, 256)",
+          borderWidth:8,
+          backgroundColor: [
+            'rgb(110, 119, 223)',
+            'rgb(223, 110, 119)'
+        ],
+        //hoverOffset: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true
+    }
+  })
+</script>
+
+<p>Correct as of {{lastFetch}}</p>
+<br />
+
+{% if op == 0 %}
+<h4>Your feed doesn't look so good today, here's a joke:</h4>
+<br />
+<p>{{setup}}</p>
+<p>{{delivery}}</p>
+
+{% elif op == 1 %}
+<h4>Your feed looks good today, here's a fact to bring balance:</h4>
+<br />
+<p>{{fact}}</p>
+
+{% elif op == 2 %}
+<h4>Your feed looks neutral today, here's a fun fact:</h4>
+<br />
+<p>{{fact}}</p>
+{% endif %} {% endblock %}

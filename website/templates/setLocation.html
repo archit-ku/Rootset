@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}Set Location{% endblock %} {% block
+ content %}
+    <br>
+    <form method="POST">
+      <h3 align="center">Set Location</h3>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="city"
+          class="form-control"
+          id="city"
+          name="city"
+          placeholder="Enter your nearest city"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% endblock %}
+    

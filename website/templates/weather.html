@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block title %}Weather Data{% endblock %} {% block
+content %} <br />
+
+<h3>Your forecast over time:</h3>
+<p style="font-size: 120%">beginning {{startDate}} in {{city}}, {{country}}</p>
+
+<canvas id="lineChart" width="900" height="400"></canvas>
+<script>
+  var ctx = document.getElementById("lineChart").getContext("2d");
+  var lineChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: {{ labels | safe }},
+      datasets: [
+        {
+          label: "Weather ranking (%)",
+          data: {{values | safe}},
+          fill: true,
+          borderColor: "rgb(58, 120, 207)",
+          lineTension: 0.4,
+          pointBackgroundColor: "rgb(255, 229, 20)"
+        }
+      ]
+    },
+    options: {
+      responsive: true
+    }
+  })
+</script>
+<!-- <p style="font-size: 200%; display: flex; justify-content: center">👇👇👇</p> -->
+<h4>Weather ranking by Category</h4>
+<br />
+<table style="border-collapse: collapse; width: 110%">
+  <tr>
+    <th style="text-align: center; border: 2px solid">Time</th>
+    <th style="text-align: center; border: 2px solid">
+      Atmospheric Conditions
+    </th>
+    <th style="text-align: center; border: 2px solid">
+      Temperature (feels-like, °C)
+    </th>
+    <th style="text-align: center; border: 2px solid">Wind Speed (mph)</th>
+  </tr>
+  {% for i in range(8) %}
+  <tr>
+    <td style="text-align: center; border: 1px solid">{{labels[i]}}</td>
+    <td style="text-align: center; border: 1px solid">{{weatherScores[i]}}</td>
+    <td style="text-align: center; border: 1px solid">{{temps[i]}}</td>
+    <td style="text-align: center; border: 1px solid">{{windSpeeds[i]}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<br />
+<form method="POST">
+  <label for="setLoc"></label>
+  <button type="submit" name="setLoc" value="true" class="btn btn-primary">
+    Change Location
+  </button>
+</form>
+
+<p style="color: white">_</p>
+
+{% endblock %}

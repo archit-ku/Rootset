@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block title %}News Data{% endblock %} {% block
+content %}
+<br />
+<h2>Analysis of Globally Trending News</h2>
+<br />
+<canvas id="pieChart" width="900" height="400"></canvas>
+<script>
+  var ctx = document.getElementById("pieChart").getContext("2d");
+  var lineChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: {{ labels | safe }},
+      datasets: [
+        {
+          //label: "Analysis of your Twitter feed",
+          data: {{values | safe}},
+          fill: true,
+          borderColor: "rgb(256, 256, 256)",
+          borderWidth:8,
+          backgroundColor: [
+            'rgb(110, 119, 223)',
+            'rgb(223, 110, 119)'
+        ],
+        //hoverOffset: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true
+    }
+  })
+</script>
+
+{% if posURLs != "none" %}
+<div>
+  <h3>Some of Today's Headlines:</h3>
+
+  {% for x in range([posTitles|length, 2]|min) %}
+  <p>{{posTitles[x]}}</p>
+  <p>
+    read more --> <a href="{{posURLs[x]}}" target="_blank">{{posURLs[x]}}</a>
+  </p>
+
+  <br />
+  {% endfor %}
+</div>
+
+<div>
+  {% for x in range([negativeTitles|length, 2]|min) %}
+  <p>{{negativeTitles[x]}}</p>
+  <p>
+    read more -->
+    <a href="{{negativeURLs[x]}}" target="_blank">{{negativeURLs[x]}}</a>
+  </p>
+
+  <br />
+  {% endfor %}
+</div>
+
+{% else %}
+<p>Check back every half hour for top stories</p>
+
+{% endif %} {% if op == 0 %}
+<h4>Global headlines don't look so good today, here's a joke:</h4>
+<br />
+<p>{{setup}}</p>
+<p>{{delivery}}</p>
+
+{% elif op == 1 %}
+<h4>Global headlines look good today, here's a fact to bring balance:</h4>
+<br />
+<p>{{fact}}</p>
+
+{% elif op == 2 %}
+<h4>Global headlines look neutral today, here's a fun fact:</h4>
+<br />
+<p>{{fact}}</p>
+{% endif %}
+<p style="color: white">_</p>
+{% endblock %}
